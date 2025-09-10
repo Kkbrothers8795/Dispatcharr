@@ -17,8 +17,6 @@ services:
       - REDIS_HOST=redis
       - CELERY_BROKER_URL=redis://redis:6379/0
       - DISPATCHARR_LOG_LEVEL=info
-      - PUID=0
-      - PGID=0
     # Optional for hardware acceleration
     group_add:
       - video
@@ -43,6 +41,7 @@ services:
       - redis
     volumes:
       - ../:/app
+      - /dev/dri:/dev/dri
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
