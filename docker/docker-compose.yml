@@ -7,6 +7,8 @@ services:
     depends_on:
       - db
       - redis
+    volumes:
+      - /dev/dri:/dev/dri
     environment:
       - POSTGRES_HOST=db
       - POSTGRES_DB=dispatcharr
@@ -15,6 +17,8 @@ services:
       - REDIS_HOST=redis
       - CELERY_BROKER_URL=redis://redis:6379/0
       - DISPATCHARR_LOG_LEVEL=info
+      - PUID=0
+      - PGID=0
     # Optional for hardware acceleration
     group_add:
       - video
